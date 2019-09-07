@@ -7,9 +7,11 @@ const API = 'http://www.omdbapi.com/?apikey=62592d49&type=movie&r=json&s=';
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = { searchInput: '' , searchResult: [] };
+        this.state = { searchInput: '' , searchResult: [] , resultShow: false};
         this.handleUpdate = this.handleUpdate.bind(this);
         this.searchMovie = this.searchMovie.bind(this);
+        this.losesFocusOnSearch = this.losesFocusOnSearch.bind(this);
+        this.focusOnSearch = this.focusOnSearch.bind(this);
     };
 
     handleUpdate(event) {
@@ -20,9 +22,9 @@ class Search extends Component {
         if (this.state.searchInput !== '') {
             fetch(API + this.state.searchInput)
                 .then(Response => Response.json())
-                .then(data => this.setState({ searchResult: (data.Search ? data.Search.slice(0,5): []) }));
-                // I need to put an if if there is no data or a data less than 5
+                .then(data => this.setState({ searchResult: (data.Search ? data.Search.slice(0,5): []), resultShow: true }));
 
+                
             console.log(this.state.searchResult);
                 
                 
@@ -34,9 +36,18 @@ class Search extends Component {
         event.preventDefault();
     };
 
+    losesFocusOnSearch() {
+        this.setState({resultShow: false});
+    };
+    
+    focusOnSearch() {
+        this.setState({resultShow: true});
+    }
+
     render() { 
         return(
-            <div className='Search'>
+            // <div className='Search' onBlur={this.losesFocusOnSearch} onFocus={this.focusOnSearch}>
+            <div className='Search' onFocus={this.focusOnSearch}>
                 <form className="form-inline" onSubmit={this.handleSubmit}>
                     <input
                         type='text' 
@@ -52,7 +63,7 @@ class Search extends Component {
                         Search
                     </button>
                 </form>
-                <SearchResult result={this.state.searchResult}/>
+                <SearchResult result={this.state.searchResult} resultShow={this.state.resultShow}/>
                 
             </div>
         );

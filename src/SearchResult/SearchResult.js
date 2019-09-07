@@ -10,14 +10,15 @@ class SearchResult extends Component {
 
     renderResult() {
         return this.props.result.map((movie, index) => (
-            <ListGroup.Item key={index}>{movie.Title}</ListGroup.Item>
+            <a href={'/movie/' + movie.imdbID}>
+                <ListGroup.Item key={index}>{movie.Title}</ListGroup.Item>
+            </a>
         ));
     }
 
     render() {
         return(
-            // <div className='searchResult' style={'display: ' + (this.props.result !== null ? 'block': 'none' )}>
-            <div className={'searchResult ' + (this.props.result.length > 0 ? '': 'hidden')}>
+            <div className={'searchResult ' + (this.props.resultShow  ? '': 'hidden')}>
                 <Card style={{ width: '18rem' }}>
                     <ListGroup variant="flush">
                         { this.renderResult() }      

@@ -1,0 +1,31 @@
+.HomeMovies {
+    width: 100%;
+
+}
+.movieCards {
+    display: table;  
+    margin-left: 8%;
+    padding: 5px;
+
+}
+
+.moviePoster {
+
+    border: 0.5px solid lightgrey;
+    margin: 10px;
+    /* padding is inside the component... */
+    padding: 10px;
+    max-width: 320px;
+    float: left;
+   
+}
+
+.moviePoster:hover {
+    border: 0.5px solid #1e2129;
+}
+
+.movieImage {
+    width: 300px;
+    height: 200px;
+
+}
