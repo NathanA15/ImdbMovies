@@ -17,7 +17,7 @@ class SearchResult extends Component {
     }
 
     hideResult() {
-        this.props.resultShow
+        // this.props.resultShow
     }
 
     render() {

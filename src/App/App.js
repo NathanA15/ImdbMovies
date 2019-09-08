@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import NavBar from '../NavBar/Navbar';
 import HomeMovies from '../HomeMovies/HomeMovies';
 import MoviePage from '../MoviePage/MoviePage';
