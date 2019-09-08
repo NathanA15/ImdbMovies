@@ -16,9 +16,13 @@ class SearchResult extends Component {
         ));
     }
 
+    hideResult() {
+        this.props.resultShow
+    }
+
     render() {
         return(
-            <div className={'searchResult ' + (this.props.resultShow  ? '': 'hidden')}>
+            <div className={'searchResult ' + (this.props.resultShow  ? '': 'hidden')} onBlur={this.hideResult}>
                 <Card style={{ width: '18rem' }}>
                     <ListGroup variant="flush">
                         { this.renderResult() }      

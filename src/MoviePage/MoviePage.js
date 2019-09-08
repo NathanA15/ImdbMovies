@@ -43,7 +43,7 @@ class MoviePage extends Component{
         return(
             <div className='movieInfo row'>
                 <img src={this.state.poster} alt={this.state.title}></img>
-                <div>
+                <div className='movieDescription'>
                     <h3>Title: <span className='movieTitle'>{this.state.title}</span></h3>
                 
                     <h4>Released: <span className='movieTitle'>{this.state.released}</span></h4>
