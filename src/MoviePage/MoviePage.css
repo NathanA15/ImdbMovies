@@ -1,18 +1,18 @@
 .movieInfo {
-    color: rgb(243, 233, 233) !important;
+  color: rgb(243, 233, 233) !important;
     
 }
 
 .moviePage {
-    margin: 0 16%;
-    /* background-color: #d04925; */
-    padding: 10px;
+	margin: 0 16%;
+	/* background-color: #d04925; */
+	padding: 10px;
 }
 
 .movieTitle {
-    font-size:20px;
+  font-size:20px;
 }
 
 .movieDescription {
-    padding-top: 7px;
+  padding-top: 7px;
 }

@@ -18,8 +18,6 @@ class HomeMovies extends Component{
 			fetch(API)
 				.then(Response => Response.json())
 				.then(data => this.setState({ movies: data.Search}));
-			console.log('yesss');
-			console.log(this.state.movies[1]);
 		};
 	};
 
@@ -31,7 +29,6 @@ class HomeMovies extends Component{
 					<img src={movie.Poster}  alt={movie.Title} className='movieImage'></img>
 				</a>
 			</div>
-			
 		));
 	};
 
@@ -42,7 +39,6 @@ class HomeMovies extends Component{
 				<div className='movieCards'>
 					{ this.displayHomeMovies() }
 				</div>
-				
 			</div>
 		);
 	};
