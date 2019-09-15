@@ -7,6 +7,7 @@ const API = 'http://www.omdbapi.com/?apikey=62592d49&plot=full&r=json&i=';
 class MoviePage extends Component{
 	constructor(props) {
 		super(props);
+		// this.props.match.params.id is passed to the component when called.
 		this.state = {
 			id: this.props.match.params.id, 
 			title: '',
@@ -20,10 +21,7 @@ class MoviePage extends Component{
 	};
 	
 	getMovieData() {
-		// fetch(API + this.state.id)
-		//     .then(Response => Response.json())
-		//     .then(data => this.setState({movie: data}));
-
+		// fetching the data of the movie.
 		fetch(API + this.state.id)
 			.then(Response => Response.json())
 			.then(data => this.setState({ 
@@ -38,6 +36,7 @@ class MoviePage extends Component{
 	};
 
 	renderMovie() {
+		// render the div with the movie description after calling the getMovieData to fetch the data of the movie.
 		this.getMovieData();
 		return(
 			<div className='movieInfo row'>
@@ -57,7 +56,6 @@ class MoviePage extends Component{
 	render() {
 		return(
 			<div className='moviePage'>
-				{/* <h6>{this.state.id}</h6> */}
 				{this.renderMovie()}
 			</div>
 		)

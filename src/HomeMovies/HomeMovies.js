@@ -7,6 +7,8 @@ import './HomeMovies.css';
 const API = 'http://www.omdbapi.com/?apikey=62592d49&r=json&s=pup&page=4-8';
 
 class HomeMovies extends Component{
+	// This component displays the movies of the home page.
+
 	constructor(props) {
 		super(props);
 		this.state = { movies: [] }
@@ -14,6 +16,7 @@ class HomeMovies extends Component{
 	};
 
 	fetchMovies() {
+		// Gets me the data of the movies and put it in the state movies
 		if(this.state.movies.length === 0 ) {
 			fetch(API)
 				.then(Response => Response.json())
@@ -22,7 +25,8 @@ class HomeMovies extends Component{
 	};
 
 	displayHomeMovies() {
-		// Needs to be done when the fetch is complete
+		// First call the fetch movies then render eachmovie in his div.
+		this.fetchMovies();
 		return this.state.movies.map(movie => (
 			<div className='moviePoster ' key={movie.imdbID}>
 				<a href={'/movie/'+ movie.imdbID}>
@@ -35,7 +39,6 @@ class HomeMovies extends Component{
 	render() {
 		return(
 			<div className='HomeMovies'>
-				{this.fetchMovies()}
 				<div className='movieCards'>
 					{ this.displayHomeMovies() }
 				</div>

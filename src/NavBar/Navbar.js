@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Search from '../Search/Search';
 
 class NavBar extends Component {
+	// This is the navBar component containing the title of the project and the search component. 
 	render() {
 		return(
 			<nav
