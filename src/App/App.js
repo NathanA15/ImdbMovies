@@ -8,7 +8,7 @@ import MoviePage from '../MoviePage/MoviePage';
 
 const App = () => {
 	return (
-		<div className="App">
+		<div className="container">
 			<NavBar />
 			<Router>
 				<div>
