@@ -7,12 +7,9 @@ class NavBar extends Component {
 	render() {
 		return(
 			<nav
-				className="navbar justify-content-between" 
+				className="navbar justify-content-between bg-secondary" 
 				style={{
-					backgroundColor: '#5680E9',
-					borderBottomLeftRadius: '8px',
-					borderBottomRightRadius: '8px',
-					color: 'white'
+					color: 'blue'
 				}}> 
 				<a className="navbar-brand" href='/' style={{color: 'white'}}>Nathan Movie's App</a>
 				<Search />

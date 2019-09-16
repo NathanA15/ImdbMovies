@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './MoviePage.css';
 
 // tt0094531 Test movie num
-const API = 'http://www.omdbapi.com/?apikey=62592d49&plot=full&r=json&i=';
+const thumbnail = 'https://image.tmdb.org/t/p/w500';
+
 
 class MoviePage extends Component{
 	constructor(props) {
@@ -13,40 +14,50 @@ class MoviePage extends Component{
 			title: '',
 			year: '',
 			released: '',
-			director: '',
 			actors: '',
-			plot: ''
+			plot: '',
+			poster: '',
+			rate: '',
+			tagline: '',
+			genres: []
 		};
 		this.getMovieData = this.getMovieData.bind(this);
 	};
 	
 	getMovieData() {
 		// fetching the data of the movie.
-		fetch(API + this.state.id)
+		// fetch(API + this.state.id)
+		fetch('https://api.themoviedb.org/3/movie/'+ this.state.id +'?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US')
 			.then(Response => Response.json())
-			.then(data => this.setState({ 
-				title: data.Title,
-				year: data.Year,
-				released: data.Released,
-				director: data.Director,
-				actors: data.Actors,
-				plot: data.Plot,
-				poster: data.Poster
-			}));
+			.then(data => this.setState({
+				title: data.title,
+				poster: data.poster_path,
+				tagline: data.tagline,
+				released: data.released_date,
+				rate: data.vote_average,
+				plot: data.overview,
+				genres: data.genres
+			}))
+			// .then(data => this.setState({ 
+			// 	title: data.Title,
+			// 	year: data.Year,
+			// 	released: data.Released,
+			// 	director: data.Director,
+			// 	actors: data.Actors,
+			// 	plot: data.Plot,
+			// 	poster: data.Poster
+			// }));
 	};
 
 	renderMovie() {
 		// render the div with the movie description after calling the getMovieData to fetch the data of the movie.
 		this.getMovieData();
 		return(
-			<div className='movieInfo row'>
-				<img src={this.state.poster} alt={this.state.title}></img>
+			<div className='movieInfo row' key={this.state.id}>
+				<img src={thumbnail + this.state.poster} alt={this.state.title}></img>
 				<div className='movieDescription'>
 					<h3>Title: <span className='movieTitle'>{this.state.title}</span></h3>
 					<h4>Released: <span className='movieTitle'>{this.state.released}</span></h4>
-					<h4>Directors: <span>{this.state.director}</span></h4>
-					<h5>Actors: <span>{this.state.actors}</span></h5>
-					<br />
 					<h5>Plot: <span>{this.state.plot}</span></h5>
 				</div>
 			</div>

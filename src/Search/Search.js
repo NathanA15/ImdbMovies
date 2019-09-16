@@ -10,7 +10,11 @@ class Search extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { searchInput: '' , searchResult: [] , resultShow: false};
+		this.state = { 
+			searchInput: '',
+			searchResult: [],
+			resultShow: false
+		};
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.searchMovie = this.searchMovie.bind(this);
 		this.onBlur = this.onBlur.bind(this);  
