@@ -46,7 +46,6 @@ class Search extends Component {
 		setTimeout(() => {
 			if (!currentTarget.contains(document.activeElement)) {
 				this.setState({resultShow: false});
-				console.log('blur2')
 			}
 		}, 0)
 	};

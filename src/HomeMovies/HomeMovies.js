@@ -32,7 +32,7 @@ class HomeMovies extends Component{
 	};
 
 	fetchGenres() {
-		if(this.state.genres.length ===0) {
+		if(this.state.genres.length === 0) {
 			fetch(genreAPI)
 				.then(response => response.json())
 				.then(data => this.setState({
@@ -56,53 +56,33 @@ class HomeMovies extends Component{
 	
 
 	displayHomeMoviesUpgraded() {
+		// First call the fetch movies then render each movie in his div.
 		this.fetchMovies();
 		this.fetchGenres();
-		// return this.state.movies.map(movie => (
-		// 	<div key={movie.id} className='col-4 no-gutters card'>
-		// 		<div className='card-header'>
-		// 			<img src={thumbnail + movie.poster_path}  alt={movie.title}></img>
-		// 		</div>
-		// 		<div className='card-body'>
-		// 			<h1 className='card-title'>{movie.title}</h1>
-		// 			<div className='container'>
-		// 				<div className='row'>
-		// 					<div className='col-4 metadata'>
-		// 						<i className="fa fa-star checked"></i>
-		// 						<p>{movie.vote_average}/10</p>
-		// 					</div>
-		// 					<div className='col-8 metadata'>
-		// 						Adventure, Drama
-		// 					</div>
-		// 				</div>
-		// 			</div>
-		// 			<p>{movie.overview}</p>
-		// 		</div>
-				
-		// 	</div>
-		// ));
 		return this.state.movies.map(movie => (
-			<Card className='col-xl-3 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center movie-card'>
-				<a href={'/movie/'+ movie.id}>
-					<Card.Img variant="top" src={thumbnail + movie.poster_path} />
-					<Card.Body className='card-body'>
-						<Card.Title className='card-title row'>
-							<div className='col-9'>
-								{movie.title}
-							</div>
-							<div className='col-3 rating'>
-								<i className="fa fa-star checked"></i>
-								<p>{movie.vote_average}/10</p>
-							</div>
-						</Card.Title>
-						<Card.Text className='row col-12'>
-							{movie.overview.substring(0, 70)}...
-						</Card.Text>
-						<Button className='btn-secondary'>See more</Button> 
-						{ /* If I can I should add the ... and when clicking on button showing the rest of text */}
-					</Card.Body>
-				</a>
-			</Card>
+			<div className='col-xl-3 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center up-card'>
+				<Card className=' movie-card'>
+					<a href={'/movie/'+ movie.id}>
+						<Card.Img variant="top"  src={thumbnail + movie.poster_path} />
+						<Card.Body className='card-body'>
+							<Card.Title className='card-title row'>
+								<div className='col-9'>
+									{movie.title}
+								</div>
+								<div className='col-3 rating'>
+									<i className="fa fa-star checked"></i>
+									<p>{movie.vote_average}/10</p>
+								</div>
+							</Card.Title>
+							<Card.Text className='row col-12'>
+								{movie.overview.substring(0, 50)}...
+							</Card.Text>
+							{ /* If I can I should add the ... and when clicking on button showing the rest of text */}
+						</Card.Body>
+						<Button className='btn-secondary button-card'>See more</Button> 
+					</a>
+				</Card>
+			</div>
 		));
 	};
 
