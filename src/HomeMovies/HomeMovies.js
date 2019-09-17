@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './HomeMovies.scss';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 
 const newAPI = 'https://api.themoviedb.org/3/discover/movie?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
@@ -82,16 +82,26 @@ class HomeMovies extends Component{
 		// 	</div>
 		// ));
 		return this.state.movies.map(movie => (
-			<Card className='col-3 movie-card'>
-				<Card.Img variant="top" src={thumbnail + movie.poster_path} />
-				<Card.Body className='card-body'>
-					<Card.Title>{movie.title}</Card.Title>
-					<Card.Text>
-						{movie.overview.substring(0, 70)}...
-    				</Card.Text>
-					{/* <Button variant="primary">Go somewhere</Button> */}
-					{/* If I can I should add the ... and when clicking on button showing the rest of text */}
-  				</Card.Body>
+			<Card className='col-xl-3 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center movie-card'>
+				<a href={'/movie/'+ movie.id}>
+					<Card.Img variant="top" src={thumbnail + movie.poster_path} />
+					<Card.Body className='card-body'>
+						<Card.Title className='card-title row'>
+							<div className='col-9'>
+								{movie.title}
+							</div>
+							<div className='col-3 rating'>
+								<i className="fa fa-star checked"></i>
+								<p>{movie.vote_average}/10</p>
+							</div>
+						</Card.Title>
+						<Card.Text className='row col-12'>
+							{movie.overview.substring(0, 70)}...
+						</Card.Text>
+						<Button className='btn-secondary'>See more</Button> 
+						{ /* If I can I should add the ... and when clicking on button showing the rest of text */}
+					</Card.Body>
+				</a>
 			</Card>
 		));
 	};
@@ -99,7 +109,7 @@ class HomeMovies extends Component{
 	render() {
 		return(
 			<div className='container'>
-				<div className='row no-gutters home-movies'>
+				<div className='row home-movies'>
 					{this.displayHomeMoviesUpgraded()}
 				</div>
 			</div>
