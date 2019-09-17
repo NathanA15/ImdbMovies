@@ -47,8 +47,8 @@ class MoviePage extends Component{
 		return(
 			<div className='movieInfo col-xl-8 col-sm-12' key={this.state.id}>
 				<div className='row'>
-					{/* <i className="fa fa-home homeButton fa-lg col-xl-1 d-none d-sm-block"><a href='/'></a></i> */}
 					<div className='col-xl-1 d-none d-sm-block'>
+						{/*  eslint-disable-next-line */}
 						<a className="fa fa-home homeButton fa-lg " href='/'></a>
 					</div>
 					

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './HomeMovies.scss';
 import { Card, Button } from 'react-bootstrap';
+import Filter from '../Filter/Filter';
 
 
 const newAPI = 'https://api.themoviedb.org/3/discover/movie?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
@@ -13,9 +14,10 @@ class HomeMovies extends Component{
 
 	constructor(props) {
 		super(props);
-		this.state = { movies: [] , page: 2, genres: []};
+		this.state = { movies: [] , page: 1, genres: [], hideFilter: false};
 		this.fetchMovies = this.fetchMovies.bind(this);
 		this.fetchGenres = this.fetchGenres.bind(this);
+		this.toggleVisibility = this.toggleVisibility.bind(this);
 	};
 
 	fetchMovies() {
@@ -60,7 +62,7 @@ class HomeMovies extends Component{
 		this.fetchMovies();
 		this.fetchGenres();
 		return this.state.movies.map(movie => (
-			<div className='col-xl-3 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center up-card'>
+			<div key={movie.id} className='col-xl-4 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center up-card'>
 				<Card className=' movie-card'>
 					<a href={'/movie/'+ movie.id}>
 						<Card.Img variant="top"  src={thumbnail + movie.poster_path} />
@@ -70,8 +72,8 @@ class HomeMovies extends Component{
 									{movie.title}
 								</div>
 								<div className='col-3 rating'>
-									<i className="fa fa-star checked"></i>
-									<p>{movie.vote_average}/10</p>
+									<i className="fa fa-star star"></i>
+									<p className="voteAverage">{movie.vote_average}/10</p>
 								</div>
 							</Card.Title>
 							<Card.Text className='row col-12'>
@@ -86,9 +88,22 @@ class HomeMovies extends Component{
 		));
 	};
 
+	toggleVisibility() {
+		this.setState(prevState => ({
+			hideFilter: !prevState.hideFilter
+		}));
+	}
+
 	render() {
 		return(
 			<div className='container'>
+
+				<div className='toggle-filter' onClick={this.toggleVisibility}> 
+					<i className='fa fa-filter' /> Filter
+				</div>
+				
+				<Filter hidden={this.state.hideFilter}/>
+				
 				<div className='row home-movies'>
 					{this.displayHomeMoviesUpgraded()}
 				</div>

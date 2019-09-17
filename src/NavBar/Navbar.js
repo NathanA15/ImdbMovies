@@ -7,8 +7,9 @@ class NavBar extends Component {
 	render() {
 		return(
 			<nav className="navbar justify-content-between bg-secondary" > 
-				<a className="navbar-brand" href='/' style={{color: 'white'}}>Nathan Movie's App</a>
-				<Search />
+				<a className="navbar-brand col-3" href='/' style={{color: 'white'}}>Nathan Movie's App</a>
+
+				<Search className='col-5'/>
 			</nav>
 		)
 	};

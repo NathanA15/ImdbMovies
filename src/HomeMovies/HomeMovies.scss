@@ -1,13 +1,16 @@
-.checked {
+.star {
 	color: orange;
+	margin-right: 6px;
+	padding-top: 1.5px;
 }
 
 .rating {
 	font-size: 16px;
-	i, p {
-		float: left;
-	};
+	display: flex;
+	flex-direction: row;
+	padding-left: 6px;
 }
+
 
 .card-title {
 	float: left;
@@ -71,4 +74,20 @@
 	position: absolute;
 	bottom: 2px;
 	right: 5px
+}
+
+.toggle-filter {
+	border: 3px solid #2f3441;
+	text-align: center;
+	margin: auto;
+	margin-top: 5px;
+	width: 10%;
+	// display: inline-block;
+	color: #aab0bc;
+	background-color: #2f3441;
+	border-radius: 5px 5px 0px 0px;	
+}
+
+.toggle-filter:hover {
+	cursor: pointer;
 }
