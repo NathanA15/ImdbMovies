@@ -11,7 +11,6 @@ class Filter extends Component{
     }
 
     checkboxCheck() {
-
     }
 
     render() {
