@@ -14,7 +14,7 @@ class HomeMovies extends Component{
 
 	constructor(props) {
 		super(props);
-		this.state = { movies: [] , page: 1, genres: [], hideFilter: false};
+		this.state = { movies: [] , page: 1, genres: [], hideFilter: true};
 		this.fetchMovies = this.fetchMovies.bind(this);
 		this.fetchGenres = this.fetchGenres.bind(this);
 		this.toggleVisibility = this.toggleVisibility.bind(this);
@@ -55,14 +55,12 @@ class HomeMovies extends Component{
 		));
 	};
 
-	
-
 	displayHomeMoviesUpgraded() {
 		// First call the fetch movies then render each movie in his div.
 		this.fetchMovies();
 		this.fetchGenres();
 		return this.state.movies.map(movie => (
-			<div key={movie.id} className='col-xl-4 col-lg-4 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center up-card'>
+			<div key={movie.id} className='col-xl-4 col-lg-6 col-md-6 col-sm-12 justify-content-sm-center justify-content-md-center up-card'>
 				<Card className=' movie-card'>
 					<a href={'/movie/'+ movie.id}>
 						<Card.Img variant="top"  src={thumbnail + movie.poster_path} />
@@ -79,7 +77,6 @@ class HomeMovies extends Component{
 							<Card.Text className='row col-12'>
 								{movie.overview.substring(0, 50)}...
 							</Card.Text>
-							{ /* If I can I should add the ... and when clicking on button showing the rest of text */}
 						</Card.Body>
 						<Button className='btn-secondary button-card'>See more</Button> 
 					</a>

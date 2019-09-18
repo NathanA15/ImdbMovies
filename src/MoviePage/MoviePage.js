@@ -54,11 +54,10 @@ class MoviePage extends Component{
 					
 					<img src={thumbnail + this.state.poster} alt={this.state.title} className='col-lg-5 col-sm-12'></img>
 					<div className='movieDescription col-xl-6 col-lg-7 col-sm-12'>
-						<h3>Title: <span className='movieTitle'>{this.state.title}</span></h3>
+						<h4>Title: <span className='movieTitle'>{this.state.title}</span></h4>
 						<h4>Released: <span className='movieTitle'>{this.state.released}</span></h4>
 						<h5>Plot: <span>{this.state.plot}</span></h5>
 					</div>
-					{/* <i className="fa fa-arrow-left arrow fa-lg"></i> */}
 				</div>
 			</div>
 		);
