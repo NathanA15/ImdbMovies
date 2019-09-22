@@ -1,6 +1,37 @@
 .filter {
-    background-color: white;
-    position: absolute;
+    background-color: #2f3441;
+    /* position: absolute; */
     z-index: 1;
-    
+    color: white;
+    border-radius: 3px;
+    padding: 12px
+}
+
+.sort-by-selected {
+    color: black;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.year-selected {
+    color: black;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.genre-selected {
+    color: black;
+    border-radius: 3px;
+    background-color: white;
+}
+
+ul.no-marker {
+    list-style-position: outside;   
+    list-style-type:none;
+}
+
+.genres-p{  
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }

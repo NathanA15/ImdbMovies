@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link, NavLink } from 'react-router-dom';
 import Search from '../Search/Search';
 
 class NavBar extends Component {
@@ -7,9 +6,9 @@ class NavBar extends Component {
 	render() {
 		return(
 			<nav className="navbar justify-content-between bg-secondary" > 
-				<a className="navbar-brand col-3" href='/' style={{color: 'white'}}>Nathan Movie's App</a>
-
-				<Search className='col-5'/>
+				<a className="navbar-brand" href="/" style={{color: "white"}}>Nathan Movie's App</a>
+				<a className="nav-item " href="/">Movies</a>
+				<Search className=""/>
 			</nav>
 		)
 	};

@@ -11,10 +11,8 @@ const App = () => {
 		<div className="container">
 			<NavBar />
 			<Router>
-				<div>
 					<Route exact path='/' component={HomeMovies} />
 					<Route path='/movie/:id' component={MoviePage} />
-				</div>
 			</Router>
 		</div>
 	);

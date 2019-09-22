@@ -78,16 +78,30 @@
 
 .toggle-filter {
 	border: 3px solid #2f3441;
+	border-bottom: #1e2129;
 	text-align: center;
-	margin: auto;
 	margin-top: 5px;
-	width: 10%;
+	// width: 10%;
 	// display: inline-block;
 	color: #aab0bc;
 	background-color: #2f3441;
 	border-radius: 5px 5px 0px 0px;	
+	padding: 0px 8px;
+}
+
+.filter-icon {
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
+.home-movies {
+	z-index: 0.95;
 }
 
 .toggle-filter:hover {
 	cursor: pointer;
+}
+
+.z-filter {
+	z-index: 1;
 }
