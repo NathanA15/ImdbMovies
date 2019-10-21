@@ -10,7 +10,7 @@ class Search extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { 
+		this.state = {
 			searchInput: '',
 			searchResult: [],
 			resultShow: false

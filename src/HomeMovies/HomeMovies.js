@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './HomeMovies.scss';
 import { Card, Button } from 'react-bootstrap';
 import Filter from '../Filter/Filter';
+import FilterWithRedux from '../Filter/FilterWithRedux';
 
 
 const newAPI = 'https://api.themoviedb.org/3/discover/movie?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
@@ -14,19 +15,19 @@ class HomeMovies extends Component{
 
 	constructor(props) {
 		super(props);
-		this.state = { movies: [] , page: 1, genres: [], hideFilter: true};
+		this.state = { movies: [] , page: 1, genres: [], hideFilter: true };
 	};
 
 	componentDidMount() {
 		this.fetchMovies();
 		this.fetchGenres();
-	} 
+	}
 
 	fetchMovies = () => {
 		// Gets me the data of the movies and put it in the state movies
 		fetch(newAPI + this.state.page)
 			.then(response => response.json())
-			.then(data => this.setState({ 
+			.then(data => this.setState({
 				movies: this.state.movies.concat(data.results), 
 				page: this.state.page + 1,
 			}))
@@ -104,7 +105,8 @@ class HomeMovies extends Component{
 					<div className='row toggle-filter d-flex justify-content-center' onClick={this.toggleVisibility}> 
 						<i className='fa fa-filter filter-icon' /> Filter
 					</div>
-					<Filter hidden={this.state.hideFilter} genres={this.state.genres} parentCallback={this.callbackFunction}/>
+					{/* <Filter hidden={this.state.hideFilter} genres={this.state.genres} parentCallback={this.callbackFunction}/> */}
+					<FilterWithRedux hidden={this.state.hideFilter} genres={this.state.genres} parentCallback={this.callbackFunction}/>
 				</div>
 
 				<div className='row home-movies'>

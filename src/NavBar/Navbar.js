@@ -8,7 +8,7 @@ class NavBar extends Component {
 			<nav className="navbar justify-content-between bg-secondary" > 
 				<a className="navbar-brand" href="/" style={{color: "white"}}>Nathan Movie's App</a>
 				<a className="nav-item movie-link" style={{color: "white"}} href="/">Movies</a>
-				<Search className=""/>
+				<Search />
 			</nav>
 		)
 	};
