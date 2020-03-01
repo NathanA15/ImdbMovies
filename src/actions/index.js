@@ -11,3 +11,10 @@ export function selectYear(yearSelected) {
         year: yearSelected
     }
 };
+
+export function selectGenre(id) {
+    return {
+        type: 'SELECT_GENRE',
+        id: id
+    }
+}

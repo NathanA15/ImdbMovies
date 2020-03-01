@@ -32,7 +32,9 @@ class Search extends Component {
 			fetch(API + this.state.searchInput)
 				.then(Response => Response.json())
 				.then(data => this.setState({ searchResult: (data.Search ? data.Search.slice(0,5): []), resultShow: true }));
-		};
+		} else {
+			this.setState({searchResult: [],resultShow: false});
+		}
 	};
 
 	handleSubmit(event) {
@@ -52,7 +54,9 @@ class Search extends Component {
 	
 	focusOnSearch() {
 		// when starting to search putting the div visible
-		this.setState({resultShow: true});
+		if(this.state.searchResult.length > 0) {
+			this.setState({resultShow: true});
+		}
 	}
 
 	render() { 

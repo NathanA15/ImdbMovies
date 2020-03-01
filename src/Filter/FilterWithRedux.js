@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Filter.css';
 import { store } from '../store';
-import { selectSortBy, selectYear } from '../actions'; 
+import { selectSortBy, selectYear, selectGenre } from '../actions'; 
 
 
 class FilterWithRedux extends Component{
@@ -19,19 +19,21 @@ class FilterWithRedux extends Component{
 
     handleClickGenre(id) {
         // Need to add an else...
-        if (!this.state.genresSelected.includes(id)) {
-            this.setState(prevState => ({
-                genresSelected: [...prevState.genresSelected, id]
-            }))
-        } else {
-            this.setState(prevState => ({
-                genresSelected: prevState.genresSelected.filter(value => value !== id )
-            }))
-        };
+        store.dispatch(selectGenre(id));
+        // if (!this.state.genresSelected.includes(id)) {
+        //     this.setState(prevState => ({
+        //         genresSelected: [...prevState.genresSelected, id]
+        //     }))
+        // } else {
+        //     this.setState(prevState => ({
+        //         genresSelected: prevState.genresSelected.filter(value => value !== id )
+        //     }))
+        // };
     }
 
     sendData = () => {
-        var data =[this.state.sortBySelected, this.state.yearSelected, this.state.genresSelected];
+        const { yearSelected, sortBySelected, genresSelected } = store.getState().filter;
+        var data =[sortBySelected, yearSelected, genresSelected];
         this.props.parentCallback(data);
     }
 
@@ -77,7 +79,7 @@ class FilterWithRedux extends Component{
                                 <p
                                     key={genre.id} 
                                     onClick={() => this.handleClickGenre(genre.id)}
-                                    className={genresSelected.includes(genre.id) ? 'genre-selected': ''}
+                                    className={genresSelected.has(genre.id) ? 'genre-selected': ''}
                                 >
                                     {genre.name}
                                 </p>

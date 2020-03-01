@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './HomeMovies.scss';
 import { Card, Button } from 'react-bootstrap';
-import Filter from '../Filter/Filter';
+// import Filter from '../Filter/Filter';
 import FilterWithRedux from '../Filter/FilterWithRedux';
 
 
@@ -80,7 +80,8 @@ class HomeMovies extends Component{
 	callbackFunction = (newData) => {
 		// I'm getting my data in a list where the first element is the order of the data, the second is the
 		// year selected and the third is an array of genres id selected.
-		var filterAPI = `https://api.themoviedb.org/3/discover/movie?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US&include_adult=false&include_video=false&page=1&sort_by=${newData[0]}&year=${newData[1]}&with_genres=${newData[2].join(',')}`;
+		console.log(newData);
+		var filterAPI = `https://api.themoviedb.org/3/discover/movie?api_key=897a3a07ad8e40e0af18f33abfc8c9fa&language=en-US&include_adult=false&include_video=false&page=1&sort_by=${newData[0]}&year=${newData[1]}&with_genres=${Array.from(newData[2]).join(',')}`;
 
 		fetch(filterAPI)
 			.then(response => response.json())

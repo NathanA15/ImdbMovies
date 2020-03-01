@@ -10,7 +10,8 @@ export default (state, action) => {
             }
             
         case 'SELECT_YEAR':
-            if(action.year === state.filter.yearSelected) {
+            const year = action.year;
+            if(year === state.filter.yearSelected) {
                 return {
                     ...state,
                     filter: {
@@ -23,11 +24,33 @@ export default (state, action) => {
                     ...state,
                     filter: {
                         ...state.filter,
-                        yearSelected: action.year
+                        yearSelected: year
                     }
                 }
             }
+        case 'SELECT_GENRE':
+            let genres = state.filter.genresSelected;
+            const id = action.id;
 
+            if(genres.has(id)) {
+                genres.delete(action.id);
+                return {
+                    ...state,
+                    filter: {
+                        ...state.filter,
+                        genresSelected: genres
+                    }
+                }
+            } else {
+                genres.add(id)
+                return {
+                    ...state,
+                    filter: {
+                        ...state.filter,
+                        genresSelected: genres
+                    }
+                }
+            }
         default:
             return state
     }
